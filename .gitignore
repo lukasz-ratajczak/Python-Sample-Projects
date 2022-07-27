@@ -125,3 +125,4 @@ dmypy.json
 
 # Hidden files
 misc.json
+.idea
