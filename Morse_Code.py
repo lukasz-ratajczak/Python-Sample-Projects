@@ -19,17 +19,35 @@ MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
 
 # App
 
-text = "Hello World"
 
 def morse_code_encrypt(text):
     result = ""
     for elem in text:
         if elem == " ":
+            result += " / "
             continue
-        result += MORSE_CODE_DICT[elem.upper()]
+        result += MORSE_CODE_DICT[elem.upper()] + " "
+
+    return result.strip()
+
+
+
+def morse_code_decrypt(text):
+    result = ""
+    for elem in text.split():
+        if elem == "/":
+            result += " "
+        for key, value in MORSE_CODE_DICT.items():
+            if value == elem:
+                result += key
 
     return result
 
 
+text = "Hello World"
+
 print(morse_code_encrypt(text))
 
+text = '.... . .-.. .-.. --- / .-- --- .-. .-.. -..'
+
+print(morse_code_decrypt(text))
